@@ -31,4 +31,4 @@ with open(file_path, 'r') as file:
                     predict_labels.append(0)
                 print("current eval score: {}".format(predict_labels.count(1) / len(predict_labels)))
 
-print("final eval score: {}".format(predict_labels.count(1) / len(predict_labels)))
+print("final eval score: {}".format(predict_labels.count(1) / len(predict_labels)))  # 0.2480916030534351
