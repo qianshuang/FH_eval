@@ -12,7 +12,10 @@ with open(file_path, 'r') as file:
     json_object = json.load(file)
     print(len(json_object))
 
-    for conv in json_object:
+    for i, conv in enumerate(json_object):
+        if i % 10 == 0:
+            print("started {}...".format(i))
+
         conv_list = conv[0]
         for qa in conv[1]:
             question = qa["question"]
@@ -26,8 +29,8 @@ with open(file_path, 'r') as file:
             chat_res = get_chatgpt_res(prompt)
             chat_res = parse_json(chat_res)
             print(chat_res)
-            print("----------------")
 
             predict_labels.append(chat_res["result"])
+            print("current eval score: {}".format(accuracy_score(labels, predict_labels)))
 
-print("eval score: {}".format(accuracy_score(labels, predict_labels)))
+print("final eval score: {}".format(accuracy_score(labels, predict_labels)))

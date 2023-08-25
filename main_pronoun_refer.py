@@ -24,8 +24,8 @@ with open(jsonl_file_path, 'r') as jsonl_file:
         chat_res = get_chatgpt_res(prompt)
         chat_res = parse_json(chat_res)
         print(chat_res)
-        print("----------------")
 
         predict_labels.append(str(chat_res["result"]).lower())
+        print("current eval score: {}".format(accuracy_score(labels, predict_labels)))
 
-print("eval score: {}".format(accuracy_score(labels, predict_labels)))  # 0.680921052631579
+print("final eval score: {}".format(accuracy_score(labels, predict_labels)))  # 0.680921052631579
