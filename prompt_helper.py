@@ -49,3 +49,25 @@ Ensure the response can be parsed by Python json.loads""".format(conversation, q
 
     return [{"role": "system", "content": "You are a trustworthy AI assistant."},
             {"role": "user", "content": prompt_str}]
+
+
+def gen_answer_extract_prompt(context, question):
+    prompt_str = """GOAL:
+With reference to the CONTEXT below, generate the most correct and concise answer to the QUESTION below.
+Let's work this out in a step by step way to be sure we have the right answer.
+
+CONTEXT:
+{}
+
+QUESTION:
+{}
+
+You should only respond in JSON format as described below:
+{{
+    "reasoning": "reasoning",
+    "result": "the most correct and concise answer"
+}}
+Ensure the response can be parsed by Python json.loads""".format(context, question)
+
+    return [{"role": "system", "content": "You are a trustworthy AI assistant."},
+            {"role": "user", "content": prompt_str}]
