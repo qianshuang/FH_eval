@@ -24,6 +24,7 @@ with open(file_path, 'r') as file:
                 chat_res = parse_json(chat_res)
                 print(chat_res)
 
+                # TODO 这里使用语义相似度更加合适
                 if "result" in chat_res and str(chat_res["result"]) in answers:
                     predict_labels.append(1)
                 else:
