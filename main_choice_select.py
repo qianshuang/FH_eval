@@ -36,4 +36,4 @@ with open(file_path, 'r') as file:
                 predict_labels.append("")
             print("current eval score: {}".format(accuracy_score(labels, predict_labels)))
 
-print("final eval score: {}".format(accuracy_score(labels, predict_labels)))  # 0.8344208809135399
+print("final eval score: {}".format(accuracy_score(labels, predict_labels)))  # 0.8362934362934363
