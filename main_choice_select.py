@@ -30,7 +30,10 @@ with open(file_path, 'r') as file:
             chat_res = parse_json(chat_res)
             print(chat_res)
 
-            predict_labels.append(chat_res["result"])
+            if "result" in chat_res:
+                predict_labels.append(str(chat_res["result"]))
+            else:
+                predict_labels.append("")
             print("current eval score: {}".format(accuracy_score(labels, predict_labels)))
 
 print("final eval score: {}".format(accuracy_score(labels, predict_labels)))
