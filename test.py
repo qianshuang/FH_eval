@@ -8,8 +8,9 @@ model = T5ForConditionalGeneration.from_pretrained("ClueAI/ChatYuan-large-v2").h
 device = torch.device('cuda')
 model.to(device)
 
+# text = f"{context}\n用户：{text}\n小元："
 text = "你是谁？"
 encoding = tokenizer(text=[text], truncation=True, padding=True, max_length=1024, return_tensors="pt").to(device)
 out = model.generate(**encoding, return_dict_in_generate=True, output_scores=False, max_new_tokens=1024, do_sample=True, top_p=1, temperature=0, no_repeat_ngram_size=12)
 out_text = tokenizer.batch_decode(out["sequences"], skip_special_tokens=True)
-print(out_text)
+print(out_text[0])
