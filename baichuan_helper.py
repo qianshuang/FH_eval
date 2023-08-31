@@ -9,10 +9,11 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan-13B-Chat", d
 model.generation_config = GenerationConfig.from_pretrained("baichuan-inc/Baichuan-13B-Chat")
 
 
-def get_chatyuan_res(prompt):
-    messages = [{"role": "system", "content": "You are a trustworthy AI assistant."}, {"role": "user", "content": prompt}]
+def get_chatyuan_res(messages):
     response = model.chat(tokenizer, messages)
     print(response)
 
 
-get_chatyuan_res("世界上第二高的山峰是哪座？")
+messages = [{"role": "system", "content": "You are a trustworthy AI assistant."},
+            {"role": "user", "content": "世界上第二高的山峰是哪座？"}]
+get_chatyuan_res(messages)
